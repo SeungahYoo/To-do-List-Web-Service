@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>ÇÒÀÏ µî·Ï</title>
+<title>í• ì¼ ë“±ë¡</title>
 <style type="text/css">
 body {
 	background-color: #d9d9d9;
@@ -57,32 +57,32 @@ form {
 <body>
 	<section>
 		<center>
-			<h1>ÇÒÀÏ µî·Ï</h1>
+			<h1>í• ì¼ ë“±ë¡</h1>
 		</center>
 
 		<form action="">
 			<div class="question">
-				¾î¶²ÀÏÀÎ°¡¿ä?<br> <input name="what" maxlength="24" size="50"
-					placeholder="swift°øºÎÇÏ±â(24ÀÚ±îÁö)" />
+				ì–´ë–¤ì¼ì¸ê°€ìš”?<br> <input name="what" maxlength="24" size="50"
+					placeholder="swiftê³µë¶€í•˜ê¸°(24ìžê¹Œì§€)" />
 			</div>
 			<div class="question">
-				´©°¡ ÇÒ ÀÏÀÎ°¡¿ä?<br> <input name="who" size="50" placeholder="È«±æµ¿" />
+				ëˆ„ê°€ í•  ì¼ì¸ê°€ìš”?<br> <input name="who" size="50" placeholder="í™ê¸¸ë™" />
 			</div>
 			<div class="question">
-				¿ì¼± ¼øÀ§¸¦ ¼±ÅÃÇÏ¼¼¿ä<br> <input type="radio" name="chk_info" value="1">1¼øÀ§
-				<input type="radio" name="chk_info" value="2">2¼øÀ§ <input
-					type="radio" name="chk_info" value="3">3¼øÀ§
+				ìš°ì„  ìˆœìœ„ë¥¼ ì„ íƒí•˜ì„¸ìš”<br> <input type="radio" name="priority" value="1">1ìˆœìœ„
+				<input type="radio" name="priority" value="2">2ìˆœìœ„ <input
+					type="radio" name="priority" value="3">3ìˆœìœ„
 			</div>
 
 			<div class="buttons">
 				<div class="btn back">
-					<a href="main.jsp "> &lt; ÀÌÀü</a>
+					<a href="main.jsp "> &lt; ì´ì „</a>
 				</div>
 				<div class="btn blue">
-					<a>Á¦Ãâ</a>
+					<a>ì œì¶œ</a>
 				</div>
 				<div class="btn blue">
-					<a>³»¿ëÁö¿ì±â</a>
+					<a>ë‚´ìš©ì§€ìš°ê¸°</a>
 				</div>
 			</div>
 		</form>
