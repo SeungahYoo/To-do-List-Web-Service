@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Ё╙юг гь╬ъгр юо╣И</title>
+<title>К┌≤Л²≤ М∙╢Л∙╪М∙═ Л²╪К⌠╓</title>
 <style type="text/css">
 #container {
 	width: 1200px;
@@ -84,7 +84,7 @@ div.new-btn {
 	margin-right: 20px;
 }
 
-#next-btn {
+.next-btn {
 	float: right;
 }
 </style>
@@ -94,9 +94,9 @@ div.new-btn {
 	<div id="container">
 
 		<header>
-			<div id="title">Ё╙юг гь╬ъгр юо╣И</div>
+			<div id="title">К┌≤Л²≤ М∙╢Л∙╪М∙═ Л²╪К⌠╓</div>
 			<div class="new-btn" style="float: right;">
-				<a href="register.jsp">╩У╥н©Н TODO ╣Н╥о</a>
+				<a href="register.jsp">Л┐┬К║°Л ╢ TODO К⌠╠К║²</a>
 			</div>
 		</header>
 		<section>
@@ -104,62 +104,62 @@ div.new-btn {
 			<div class="list">
 				<div class="status">TODO</div>
 				<div class="card">
-					<div class="content">юз╧ы╫╨е╘╦Ёф╝ ╟Ь╨нго╠Б</div>
-					<div class="detail">╣Н╥оЁ╞б╔ 2018.03.10, х╚╠Ф╣©, ©Л╪╠╪Ью╖ 1</div>
-					<button id="next-btn">║Ф</button>
+					<div class="content">Л·░К╟■Л┼╓М│╛К╕╫М┼╦ ЙЁ╣К╤─М∙≤Й╦╟</div>
+					<div class="detail">К⌠╠К║²К┌═Л╖° 2018.03.10, М≥█Й╦╦К▐≥, Л ╟Л└═Л┬°Л°└ 1</div>
+					<button class="next-btn">Б├▓</button>
 				</div>
 				<div class="card">
-					<div class="content">юз╧ы╫╨е╘╦Ёф╝ ╟Ь╨нго╠Б</div>
-					<div class="detail">╣Н╥оЁ╞б╔ 2018.03.10, х╚╠Ф╣©, ©Л╪╠╪Ью╖ 1</div>
-					<button id="next-btn">║Ф</button>
+					<div class="content">Л·░К╟■Л┼╓М│╛К╕╫М┼╦ ЙЁ╣К╤─М∙≤Й╦╟</div>
+					<div class="detail">К⌠╠К║²К┌═Л╖° 2018.03.10, М≥█Й╦╦К▐≥, Л ╟Л└═Л┬°Л°└ 1</div>
+					<button class="next-btn">Б├▓</button>
 				</div>
 			</div>
 
 			<div class="list">
 				<div class="status">DOING</div>
 				<div class="card">
-					<div class="content">юз╧ы╫╨е╘╦Ёф╝ ╟Ь╨нго╠Б</div>
-					<div class="detail">╣Н╥оЁ╞б╔ 2018.03.10, х╚╠Ф╣©, ©Л╪╠╪Ью╖ 1</div>
-					<button id="next-btn">║Ф</button>
+					<div class="content">Л·░К╟■Л┼╓М│╛К╕╫М┼╦ ЙЁ╣К╤─М∙≤Й╦╟</div>
+					<div class="detail">К⌠╠К║²К┌═Л╖° 2018.03.10, М≥█Й╦╦К▐≥, Л ╟Л└═Л┬°Л°└ 1</div>
+					<button class="next-btn">Б├▓</button>
 				</div>
 				<div class="card">
-					<div class="content">юз╧ы╫╨е╘╦Ёф╝ ╟Ь╨нго╠Б</div>
-					<div class="detail">╣Н╥оЁ╞б╔ 2018.03.10, х╚╠Ф╣©, ©Л╪╠╪Ью╖ 1</div>
-					<button id="next-btn">║Ф</button>
+					<div class="content">Л·░К╟■Л┼╓М│╛К╕╫М┼╦ ЙЁ╣К╤─М∙≤Й╦╟</div>
+					<div class="detail">К⌠╠К║²К┌═Л╖° 2018.03.10, М≥█Й╦╦К▐≥, Л ╟Л└═Л┬°Л°└ 1</div>
+					<button class="next-btn">Б├▓</button>
 				</div>
 				<div class="card">
-					<div class="content">юз╧ы╫╨е╘╦Ёф╝ ╟Ь╨нго╠Б</div>
-					<div class="detail">╣Н╥оЁ╞б╔ 2018.03.10, х╚╠Ф╣©, ©Л╪╠╪Ью╖ 1</div>
-					<button id="next-btn">║Ф</button>
+					<div class="content">Л·░К╟■Л┼╓М│╛К╕╫М┼╦ ЙЁ╣К╤─М∙≤Й╦╟</div>
+					<div class="detail">К⌠╠К║²К┌═Л╖° 2018.03.10, М≥█Й╦╦К▐≥, Л ╟Л└═Л┬°Л°└ 1</div>
+					<button class="next-btn">Б├▓</button>
 				</div>
 			</div>
 
 			<div class="list">
 				<div class="status">DONE</div>
 				<div class="card">
-					<div class="content">юз╧ы╫╨е╘╦Ёф╝ ╟Ь╨нго╠Б</div>
-					<div class="detail">╣Н╥оЁ╞б╔ 2018.03.10, х╚╠Ф╣©, ©Л╪╠╪Ью╖ 1</div>
-					<button id="next-btn">║Ф</button>
+					<div class="content">Л·░К╟■Л┼╓М│╛К╕╫М┼╦ ЙЁ╣К╤─М∙≤Й╦╟</div>
+					<div class="detail">К⌠╠К║²К┌═Л╖° 2018.03.10, М≥█Й╦╦К▐≥, Л ╟Л└═Л┬°Л°└ 1</div>
+					<button class="next-btn">Б├▓</button>
 				</div>
 				<div class="card">
-					<div class="content">юз╧ы╫╨е╘╦Ёф╝ ╟Ь╨нго╠Б</div>
-					<div class="detail">╣Н╥оЁ╞б╔ 2018.03.10, х╚╠Ф╣©, ©Л╪╠╪Ью╖ 1</div>
-					<button id="next-btn">║Ф</button>
+					<div class="content">Л·░К╟■Л┼╓М│╛К╕╫М┼╦ ЙЁ╣К╤─М∙≤Й╦╟</div>
+					<div class="detail">К⌠╠К║²К┌═Л╖° 2018.03.10, М≥█Й╦╦К▐≥, Л ╟Л└═Л┬°Л°└ 1</div>
+					<button class="next-btn">Б├▓</button>
 				</div>
 				<div class="card">
-					<div class="content">юз╧ы╫╨е╘╦Ёф╝ ╟Ь╨нго╠Б</div>
-					<div class="detail">╣Н╥оЁ╞б╔ 2018.03.10, х╚╠Ф╣©, ©Л╪╠╪Ью╖ 1</div>
-					<button id="next-btn">║Ф</button>
+					<div class="content">Л·░К╟■Л┼╓М│╛К╕╫М┼╦ ЙЁ╣К╤─М∙≤Й╦╟</div>
+					<div class="detail">К⌠╠К║²К┌═Л╖° 2018.03.10, М≥█Й╦╦К▐≥, Л ╟Л└═Л┬°Л°└ 1</div>
+					<button class="next-btn">Б├▓</button>
 				</div>
 				<div class="card">
-					<div class="content">юз╧ы╫╨е╘╦Ёф╝ ╟Ь╨нго╠Б</div>
-					<div class="detail">╣Н╥оЁ╞б╔ 2018.03.10, х╚╠Ф╣©, ©Л╪╠╪Ью╖ 1</div>
-					<button id="next-btn">║Ф</button>
+					<div class="content">Л·░К╟■Л┼╓М│╛К╕╫М┼╦ ЙЁ╣К╤─М∙≤Й╦╟</div>
+					<div class="detail">К⌠╠К║²К┌═Л╖° 2018.03.10, М≥█Й╦╦К▐≥, Л ╟Л└═Л┬°Л°└ 1</div>
+					<button class="next-btn">Б├▓</button>
 				</div>
 				<div class="card">
-					<div class="content">юз╧ы╫╨е╘╦Ёф╝ ╟Ь╨нго╠Б</div>
-					<div class="detail">╣Н╥оЁ╞б╔ 2018.03.10, х╚╠Ф╣©, ©Л╪╠╪Ью╖ 1</div>
-					<button id="next-btn">║Ф</button>
+					<div class="content">Л·░К╟■Л┼╓М│╛К╕╫М┼╦ ЙЁ╣К╤─М∙≤Й╦╟</div>
+					<div class="detail">К⌠╠К║²К┌═Л╖° 2018.03.10, М≥█Й╦╦К▐≥, Л ╟Л└═Л┬°Л°└ 1</div>
+					<button class="next-btn">Б├▓</button>
 				</div>
 			</div>
 		</section>
