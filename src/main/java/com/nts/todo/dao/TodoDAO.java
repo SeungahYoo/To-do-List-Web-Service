@@ -10,9 +10,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nts.todo.dto.todo;
+import com.nts.todo.dto.Todo;
 
-public class todoDAO {
+public class TodoDAO {
 	private static String DB_URL = "jdbc:mysql://10.113.116.52:13306/user10?useSSL=false";
 	private static String DB_USER = "user10";
 	private static String DB_PASSWORD = "user10";
@@ -21,13 +21,13 @@ public class todoDAO {
 	private static PreparedStatement PS = null;
 	private static ResultSet RS = null;
 
-	public todoDAO() throws ClassNotFoundException, SQLException {
+	public TodoDAO() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		CONN = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 	}
 
-	public List<todo> getTodos(String type) {
-		ArrayList<todo> todos = new ArrayList<>();
+	public List<Todo> getTodos(String type) {
+		ArrayList<Todo> todos = new ArrayList<>();
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -38,7 +38,7 @@ public class todoDAO {
 			RS = PS.executeQuery();
 
 			while (RS.next()) {
-				todo selectedTodo = new todo();
+				Todo selectedTodo = new Todo();
 				selectedTodo.setId(RS.getLong("id"));
 				selectedTodo.setTitle(RS.getString("title"));
 				selectedTodo.setName(RS.getString("name"));
@@ -85,7 +85,7 @@ public class todoDAO {
 		return todos;
 	}
 
-	public int addTodo(todo todo) {
+	public int addTodo(Todo todo) {
 		int result = 0;
 
 		try {
@@ -131,7 +131,7 @@ public class todoDAO {
 		return result;
 	}
 
-	public int updateTodo(todo todo) {
+	public int updateTodo(Todo todo) {
 		int result = 0;
 		PreparedStatement ps = null;
 		ResultSet rs = null;

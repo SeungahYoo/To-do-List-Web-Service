@@ -2,7 +2,7 @@ package com.nts.todo.dto;
 
 import java.time.LocalDateTime;
 
-public class todo {
+public class Todo {
 	private long id;
 	private String name;
 	private LocalDateTime regdate;
@@ -10,11 +10,11 @@ public class todo {
 	private String title;
 	private String type;
 
-	public todo() {
+	public Todo() {
 		super();
 	}
 
-	public todo(String name, int sequence, String title) {
+	public Todo(String name, int sequence, String title) {
 		super();
 		this.name = name;
 		this.sequence = sequence;
