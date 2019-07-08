@@ -10,17 +10,6 @@ public class Todo {
 	private String title;
 	private String type;
 
-	public Todo() {
-		super();
-	}
-
-	public Todo(String name, int sequence, String title) {
-		super();
-		this.name = name;
-		this.sequence = sequence;
-		this.title = title;
-	}
-
 	public long getId() {
 		return id;
 	}
