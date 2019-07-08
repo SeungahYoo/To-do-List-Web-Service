@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,168 +16,62 @@ public class TodoDAO {
 	private static String DB_URL = "jdbc:mysql://10.113.116.52:13306/user10?useSSL=false";
 	private static String DB_USER = "user10";
 	private static String DB_PASSWORD = "user10";
-	private static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 	private static Connection CONN = null;
-	private static PreparedStatement PS = null;
-	private static ResultSet RS = null;
 
 	public TodoDAO() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		CONN = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 	}
 
-	public List<Todo> getTodos(String type) {
+	public List<Todo> getTodos(String type) throws SQLException {
+		System.out.println(type);
 		ArrayList<Todo> todos = new ArrayList<>();
+		String sql = "SELECT * FROM todo WHERE type = ?";
 
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			CONN = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-			String sql = "SELECT * FROM todo WHERE type = ?";
-			PS = CONN.prepareStatement(sql);
-			PS.setString(1, type);
-			RS = PS.executeQuery();
-
-			while (RS.next()) {
+		try (PreparedStatement ps = CONN.prepareStatement(sql);) {
+			ps.setString(1, type);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
 				Todo selectedTodo = new Todo();
-				selectedTodo.setId(RS.getLong("id"));
-				selectedTodo.setTitle(RS.getString("title"));
-				selectedTodo.setName(RS.getString("name"));
-				selectedTodo.setSequence(RS.getInt("sequence"));
-				selectedTodo.setType(RS.getString("type"));
+				selectedTodo.setId(rs.getLong("id"));
+				selectedTodo.setTitle(rs.getString("title"));
+				selectedTodo.setName(rs.getString("name"));
+				selectedTodo.setSequence(rs.getInt("sequence"));
+				selectedTodo.setType(rs.getString("type"));
 
 				//Timestamp -> LocalDateTime type casting
-				Timestamp tmpDate = RS.getTimestamp("regdate");
+				Timestamp tmpDate = rs.getTimestamp("regdate");
 				LocalDateTime dateTime = tmpDate.toLocalDateTime();
 				selectedTodo.setRegdate(dateTime);
 
 				todos.add(selectedTodo);
 			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (RS != null) {
-				try {
-					RS.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (PS != null) {
-				try {
-					PS.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (CONN != null) {
-				try {
-					CONN.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
 		}
-
 		return todos;
 	}
 
-	public int addTodo(Todo todo) {
+	public int addTodo(Todo todo) throws SQLException {
 		int result = 0;
 
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			CONN = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-			String sql = "insert into todo(title, name, sequence) values(?, ?, ?)";
-			PS = CONN.prepareStatement(sql);
-			PS.setString(1, todo.getTitle());
-			PS.setString(2, todo.getName());
-			PS.setInt(3, todo.getSequence());
-			RS = PS.executeQuery();
-
-			result = PS.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (RS != null) {
-				try {
-					RS.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (PS != null) {
-				try {
-					PS.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (CONN != null) {
-				try {
-					CONN.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+		String sql = "INSERT INTO todo(title, name, sequence) VALUES(?, ?, ?)";
+		try (PreparedStatement ps = CONN.prepareStatement(sql);) {
+			ps.setString(1, todo.getTitle());
+			ps.setString(2, todo.getName());
+			ps.setInt(3, todo.getSequence());
+			result = ps.executeUpdate();
 		}
 		return result;
 	}
 
-	public int updateTodo(Todo todo) {
+	public int updateTodo(Todo todo) throws SQLException {
 		int result = 0;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
 		String currentType = todo.getType();
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			CONN = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-			String sql = "";
-			if (currentType.equals("TODO")) {
-				sql = "update todo set type = 'DOING' where id = ?";
-			} else if (currentType.equals("DOING")) {
-				sql = "update todo set type = 'DONE' where id = ?";
-			}
-			ps = CONN.prepareStatement(sql);
+		String sql = "UPDATE todo SET type = 'DOING' WHERE id = ?";
+		//sql = "update todo set type = 'DONE' where id = ?";
+		try (PreparedStatement ps = CONN.prepareStatement(sql);) {
 			ps.setLong(1, todo.getId());
-			rs = ps.executeQuery();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (ps != null) {
-				try {
-					ps.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			if (CONN != null) {
-				try {
-					CONN.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+			result = ps.executeUpdate();
 		}
-
 		return result;
 	}
 
