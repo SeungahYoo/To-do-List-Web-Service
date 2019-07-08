@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -45,9 +46,9 @@ public class TodoDAO {
 				selectedTodo.setSequence(RS.getInt("sequence"));
 				selectedTodo.setType(RS.getString("type"));
 
-				//String -> LocalDateTime type casting
-				String tmpDate = RS.getString("regdate");
-				LocalDateTime dateTime = LocalDateTime.parse(tmpDate.substring(0, tmpDate.length() - 2), FORMATTER);
+				//Timestamp -> LocalDateTime type casting
+				Timestamp tmpDate = RS.getTimestamp("regdate");
+				LocalDateTime dateTime = tmpDate.toLocalDateTime();
 				selectedTodo.setRegdate(dateTime);
 
 				todos.add(selectedTodo);
