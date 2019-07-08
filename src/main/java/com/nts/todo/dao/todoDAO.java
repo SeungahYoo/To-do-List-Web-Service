@@ -39,12 +39,10 @@ public class todoDAO {
 				selectedTodo.setName(rs.getString("name"));
 				selectedTodo.setSequence(rs.getInt("sequence"));
 				selectedTodo.setType(rs.getString("type"));
-				String tmpDate = rs.getString("regdate");
-				tmpDate = tmpDate.substring(0, tmpDate.length() - 2);
-				System.out.println(tmpDate);
 
-				LocalDateTime dateTime = LocalDateTime.parse(tmpDate, FORMATTER);
-				System.out.println(dateTime);
+				//String -> LocalDateTime type casting
+				String tmpDate = rs.getString("regdate");
+				LocalDateTime dateTime = LocalDateTime.parse(tmpDate.substring(0, tmpDate.length() - 2), FORMATTER);
 				selectedTodo.setRegdate(dateTime);
 
 				todos.add(selectedTodo);

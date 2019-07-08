@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="EUC-KR">
@@ -90,7 +93,7 @@ div.new-btn {
 </style>
 </head>
 <body>
-
+	${list.id }
 	<div id="container">
 
 		<header>
@@ -103,16 +106,15 @@ div.new-btn {
 
 			<div class="list">
 				<div class="status">TODO</div>
-				<div class="card">
-					<div class="content">자바스크립트 공부하기</div>
-					<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
-					<button class="next-btn">→</button>
-				</div>
-				<div class="card">
-					<div class="content">자바스크립트 공부하기</div>
-					<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
-					<button class="next-btn">→</button>
-				</div>
+
+				<c:forEach items="${todoes}" var="todo">
+					<div class="card">
+						<div class="content">${todo.id }</div>
+						<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
+						<button class="next-btn">→</button>
+					</div>
+				</c:forEach>
+
 			</div>
 
 			<div class="list">
