@@ -64,12 +64,12 @@ public class TodoDAO {
 
 	public int updateTodo(Todo todo) throws SQLException {
 		int result = 0;
-		String currentType = todo.getType();
-		String sql = "UPDATE todo SET type = 'DOING' WHERE id = ?";
+		String sql = "UPDATE todo SET type = ? WHERE id = ?";
 		//sql = "update todo set type = 'DONE' where id = ?";
 		try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 			PreparedStatement ps = conn.prepareStatement(sql);) {
-			ps.setLong(1, todo.getId());
+			ps.setString(1, todo.getType());
+			ps.setLong(2, todo.getId());
 			result = ps.executeUpdate();
 		}
 		return result;
