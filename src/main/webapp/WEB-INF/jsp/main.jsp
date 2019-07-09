@@ -1,5 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -108,7 +107,8 @@ div.new-btn {
 				<c:forEach var="todo" items="${todos }">
 					<div class="card">
 						<div class="content">${todo.title }</div>
-						<div class="detail">등록날짜 ${todo.regdate }, ${todo.name }, 우선순위 ${todo.sequence }</div>
+						<div class="detail">등록날짜 ${todo.regdate }, ${todo.name },
+							우선순위 ${todo.sequence }</div>
 						<button class="next-btn">→</button>
 					</div>
 				</c:forEach>
@@ -117,50 +117,26 @@ div.new-btn {
 
 			<div class="list">
 				<div class="status">DOING</div>
-				<div class="card">
-					<div class="content">자바스크립트 공부하기</div>
-					<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
-					<button class="next-btn">→</button>
-				</div>
-				<div class="card">
-					<div class="content">자바스크립트 공부하기</div>
-					<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
-					<button class="next-btn">→</button>
-				</div>
-				<div class="card">
-					<div class="content">자바스크립트 공부하기</div>
-					<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
-					<button class="next-btn">→</button>
-				</div>
+				<c:forEach var="doing" items="${doings }">
+					<div class="card">
+						<div class="content">${doing.title }</div>
+						<div class="detail">등록날짜 ${doing.regdate }, ${doing.name },
+							우선순위 ${doing.sequence }</div>
+						<button class="next-btn">→</button>
+					</div>
+				</c:forEach>
 			</div>
 
 			<div class="list">
 				<div class="status">DONE</div>
-				<div class="card">
-					<div class="content">자바스크립트 공부하기</div>
-					<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
-					<button class="next-btn">→</button>
-				</div>
-				<div class="card">
-					<div class="content">자바스크립트 공부하기</div>
-					<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
-					<button class="next-btn">→</button>
-				</div>
-				<div class="card">
-					<div class="content">자바스크립트 공부하기</div>
-					<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
-					<button class="next-btn">→</button>
-				</div>
-				<div class="card">
-					<div class="content">자바스크립트 공부하기</div>
-					<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
-					<button class="next-btn">→</button>
-				</div>
-				<div class="card">
-					<div class="content">자바스크립트 공부하기</div>
-					<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
-					<button class="next-btn">→</button>
-				</div>
+				<c:forEach var="done" items="${dones }">
+					<div class="card">
+						<div class="content">${done.title }</div>
+						<div class="detail">등록날짜 ${done.regdate }, ${done.name },
+							우선순위 ${done.sequence }</div>
+						<button class="next-btn">→</button>
+					</div>
+				</c:forEach>
 			</div>
 		</section>
 	</div>

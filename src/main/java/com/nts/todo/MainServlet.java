@@ -23,14 +23,19 @@ public class MainServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		TodoDAO dao = new TodoDAO();
 		List<Todo> todos = null;
+		List<Todo> doings = null;
+		List<Todo> dones = null;
 
 		try {
 			todos = dao.getTodos("TODO");
+			doings = dao.getTodos("DOING");
+			dones = dao.getTodos("DONE");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(todos);
 		request.setAttribute("todos", todos);
+		request.setAttribute("doings", doings);
+		request.setAttribute("dones", dones);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 		requestDispatcher.forward(request, response);
 	}
