@@ -7,6 +7,18 @@
 <meta charset="EUC-KR">
 <title>나의 해야할 일들</title>
 <link rel="stylesheet" type="text/css" href="css/main.css" />
+<script type="text/javascript">
+function changeStatus(data) {
+	const s = document.getElementsByName('todoID');
+	console.log(s);
+	var oReq = new XMLHttpRequest();
+	oReq.addEventListener("load", function() {
+	  console.log(this.responseText);
+	});    
+	oReq.open("GET", "UpdateStatusServlet?id="+s);//parameter를 붙여서 보낼수있음. 
+	oReq.send();
+	}
+</script>
 </head>
 <body>
 	<div id="container">
@@ -27,7 +39,8 @@
 						<div class="content">${todo.title }</div>
 						<div class="detail">등록날짜 ${todo.regdate }, ${todo.name },
 							우선순위 ${todo.sequence }</div>
-						<button class="next-btn">→</button>
+						<input id="${todo.name }" name="todoID" type="hidden" value="${todo.name }" />
+						<button class="next-btn" onclick="changeStatus()">→</button>
 					</div>
 				</c:forEach>
 
