@@ -8,14 +8,14 @@
 <title>나의 해야할 일들</title>
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <script type="text/javascript">
-function changeStatus(data) {
-	const s = document.getElementsByName('todoID');
-	console.log(s);
+function changeStatus(id, status) {
+	console.log(id);
+	console.log(status);
 	var oReq = new XMLHttpRequest();
 	oReq.addEventListener("load", function() {
 	  console.log(this.responseText);
 	});    
-	oReq.open("GET", "UpdateStatusServlet?id="+s);//parameter를 붙여서 보낼수있음. 
+	oReq.open("GET", "UpdateStatusServlet?id="+id+"&type="+status);//parameter를 붙여서 보낼수있음. 
 	oReq.send();
 	}
 </script>
@@ -39,8 +39,7 @@ function changeStatus(data) {
 						<div class="content">${todo.title }</div>
 						<div class="detail">등록날짜 ${todo.regdate }, ${todo.name },
 							우선순위 ${todo.sequence }</div>
-						<input id="${todo.name }" name="todoID" type="hidden" value="${todo.name }" />
-						<button class="next-btn" onclick="changeStatus()">→</button>
+						<button class="next-btn" onclick="changeStatus(${todo.id},'${todo.type}')" >→</button>
 					</div>
 				</c:forEach>
 
@@ -53,7 +52,7 @@ function changeStatus(data) {
 						<div class="content">${doing.title }</div>
 						<div class="detail">등록날짜 ${doing.regdate }, ${doing.name },
 							우선순위 ${doing.sequence }</div>
-						<button class="next-btn">→</button>
+						<button class="next-btn" onclick="changeStatus(${todo.id},'${todo.type}')">→</button>
 					</div>
 				</c:forEach>
 			</div>
@@ -65,7 +64,6 @@ function changeStatus(data) {
 						<div class="content">${done.title }</div>
 						<div class="detail">등록날짜 ${done.regdate }, ${done.name },
 							우선순위 ${done.sequence }</div>
-						<button class="next-btn">→</button>
 					</div>
 				</c:forEach>
 			</div>
