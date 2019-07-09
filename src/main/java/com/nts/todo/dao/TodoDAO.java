@@ -25,7 +25,6 @@ public class TodoDAO {
 	}
 
 	public List<Todo> getTodos(String type) throws SQLException {
-		System.out.println(type);
 		List<Todo> todos = new ArrayList<>();
 		String sql = "SELECT * FROM todo WHERE type = ?";
 
@@ -46,14 +45,13 @@ public class TodoDAO {
 			}
 		}
 
-		System.out.println("hello");
 		return todos;
 	}
 
 	public int addTodo(Todo todo) throws SQLException {
 		int result = 0;
-
 		String sql = "INSERT INTO todo(title, name, sequence) VALUES(?, ?, ?)";
+
 		try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 			PreparedStatement ps = conn.prepareStatement(sql);) {
 			ps.setString(1, todo.getTitle());
