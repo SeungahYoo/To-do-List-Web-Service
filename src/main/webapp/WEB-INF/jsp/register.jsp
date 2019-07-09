@@ -5,54 +5,7 @@
 <head>
 <meta charset="UTF-8"">
 <title>할일 등록</title>
-<style type="text/css">
-body {
-	background-color: #d9d9d9;
-}
-
-section {
-	background-color: white;
-	padding: 40px 150px;
-	width: 900px;
-	height: 400px;
-	margin: 50px auto;
-}
-
-div.question {
-	margin: 25px 0px;
-	height: 50px;
-	line-height: 30px;
-}
-
-div.btn {
-	width: 100px;
-	height: 30px;
-	text-align: center;
-	line-height: 30px;
-	cursor: pointer;
-	display: inline-block;
-}
-
-div.blue {
-	color: white;
-	background: #619eff;
-	float: right;
-	margin-left: 20px;
-}
-
-div.back {
-	border: 0.3px solid black;
-}
-
-div.buttons {
-	margin-top: 50px;
-}
-
-form {
-	width: 450px;
-	margin: 0px auto;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="css/register.css" />
 </head>
 <body>
 	<section>
@@ -76,7 +29,7 @@ form {
 
 			<div class="buttons">
 				<div class="btn back">
-					<a href="main.jsp "> &lt; 이전</a>
+					<a href="MainServlet "> &lt; 이전</a>
 				</div>
 				<div class="btn blue">
 					<a>제출</a>
