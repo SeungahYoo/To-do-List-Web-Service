@@ -1,4 +1,4 @@
-package com.nts.todo;
+package com.nts.todo.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
