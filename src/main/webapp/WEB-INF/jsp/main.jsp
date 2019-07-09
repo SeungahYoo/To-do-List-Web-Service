@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.util.*"%>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
@@ -93,13 +92,12 @@ div.new-btn {
 </style>
 </head>
 <body>
-	${list.id }
 	<div id="container">
 
 		<header>
 			<div id="title">나의 해야할 일들</div>
 			<div class="new-btn" style="float: right;">
-				<a href="register.jsp">새로운 TODO 등록</a>
+				<a href="./register.jsp">새로운 TODO 등록</a>
 			</div>
 		</header>
 		<section>
@@ -107,10 +105,10 @@ div.new-btn {
 			<div class="list">
 				<div class="status">TODO</div>
 
-				<c:forEach items="${todoes}" var="todo">
+				<c:forEach var="todo" items="${todos }">
 					<div class="card">
-						<div class="content">${todo.id }</div>
-						<div class="detail">등록날짜 2018.03.10, 홍길동, 우선순위 1</div>
+						<div class="content">${todo.title }</div>
+						<div class="detail">등록날짜 ${todo.regdate }, ${todo.name }, 우선순위 ${todo.sequence }</div>
 						<button class="next-btn">→</button>
 					</div>
 				</c:forEach>
