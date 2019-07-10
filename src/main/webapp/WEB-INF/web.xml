@@ -7,14 +7,18 @@
 
 	<error-page>
 		<error-code>404</error-code>
-		<location>/error404.jsp</location>
+		<location>/WEB-INF/error/error404.jsp</location>
 	</error-page>
 	<error-page>
 		<exception-type>java.lang.NullPionterException</exception-type>
-		<location>/errorNull.jsp</location>
+		<location>/WEB-INF/error/errorNull.jsp</location>
 	</error-page>
 	<error-page>
-		<location>/error.jsp</location>
+		<exception-type>java.lang.ArithmeticException</exception-type>
+		<location>/WEB-INF/error/errorHandler</location>
+	</error-page>
+	<error-page>
+		<location>/WEB-INF/error/error.jsp</location>
 	</error-page>
 
 </web-app>
