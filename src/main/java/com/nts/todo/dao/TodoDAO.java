@@ -19,6 +19,8 @@ public class TodoDAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
+			System.out.println("Error Type: " + e.getClass().getName());
+			System.out.println("Error Message: " + e.getMessage());
 			throw new RuntimeException(e);
 		}
 	}

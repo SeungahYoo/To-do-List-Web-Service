@@ -35,6 +35,8 @@ public class MainServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (SQLException e) {
+			System.out.println("Error Type: " + e.getClass().getName());
+			System.out.println("Error Message: " + e.getMessage());
 			throw new RuntimeException(e);
 		}
 

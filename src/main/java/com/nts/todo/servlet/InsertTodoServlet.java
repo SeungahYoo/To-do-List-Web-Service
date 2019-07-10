@@ -30,6 +30,8 @@ public class InsertTodoServlet extends HttpServlet {
 			dao.addTodo(createTodo(request));
 			response.sendRedirect("MainServlet");
 		} catch (SQLException e) {
+			System.out.println("Error Type: " + e.getClass().getName());
+			System.out.println("Error Message: " + e.getMessage());
 			throw new RuntimeException(e);
 		}
 
