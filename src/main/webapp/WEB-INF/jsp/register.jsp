@@ -20,9 +20,10 @@
 				누가 할 일인가요?<br> <input name="name" size="50" placeholder="홍길동" />
 			</div>
 			<div class="question">
-				우선 순위를 선택하세요<br> <input type="radio" name="sequence" value="1">1순위
-				<input type="radio" name="sequence" value="2">2순위 <input
-					type="radio" name="sequence" value="3">3순위
+				우선 순위를 선택하세요<br> 
+				<label><input type="radio" name="sequence" value="1"/>1순위</label>
+				<label><input type="radio" name="sequence" value="2"/>2순위</label>
+				<label><input type="radio" name="sequence" value="3"/>3순위</label>
 			</div>
 			<div class="buttons">
 				<div class="btn back">
