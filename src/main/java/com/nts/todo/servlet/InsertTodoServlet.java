@@ -15,29 +15,34 @@ import com.nts.todo.dto.Todo;
 @WebServlet("/InsertTodoServlet")
 public class InsertTodoServlet extends HttpServlet {
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+		doPost(request, response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		String title = req.getParameter("title");
-		String name = req.getParameter("name");
-		int sequence = Integer.parseInt(req.getParameter("sequence"));
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 
-		TodoDAO dao = new TodoDAO();
+		try {
+			TodoDAO dao = new TodoDAO();
+			dao.addTodo(createTodo(request));
+			response.sendRedirect("MainServlet");
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+
+	private Todo createTodo(HttpServletRequest request) {
+		String title = request.getParameter("title");
+		String name = request.getParameter("name");
+		int sequence = Integer.parseInt(request.getParameter("sequence"));
 		Todo todo = new Todo();
 		todo.setTitle(title);
 		todo.setName(name);
 		todo.setSequence(sequence);
-		try {
-			dao.addTodo(todo);
-		} catch (SQLException e) {
-
-		}
-
-		resp.sendRedirect("MainServlet");
+		return todo;
 	}
-
 }

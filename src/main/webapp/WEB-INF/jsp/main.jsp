@@ -7,36 +7,7 @@
 <meta charset="UTF-8">
 <title>나의 해야할 일들</title>
 <link rel="stylesheet" type="text/css" href="css/main.css" />
-<script type="text/javascript">
 
-function changeStatus(id, status) {
-	const request = new XMLHttpRequest();
-	const button = event.target;
-	const information = 'id='+id+'&type='+status;
-	console.log(information);
-	request.addEventListener("load", function() {
-	  console.log(this.responseText);
-	});    
-	request.open("POST", "UpdateStatusServlet");//parameter를 붙여서 보낼수있음. 
-	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	request.send(information);
-	
-	request.onreadystatechange = function() {
-		if (request.readyState == 4 && request.status == 200) {
-			const clickedCard = button.parentNode;
-			let doList;
-			if(status === "TODO"){//todo->doing
-				button.setAttribute("onClick","changeStatus("+id+",'DOING')")
-				doList = document.querySelector("#doing-list");
-			}else if(status === "DOING"){//doing->done
-				button.remove();
-				doList = document.querySelector("#done-list");
-			}
-			doList.appendChild(clickedCard);
-		}
-	};
-}
-</script>
 </head>
 
 <body>
@@ -87,5 +58,37 @@ function changeStatus(id, status) {
 			</div>
 		</section>
 	</div>
+
+	<script type="text/javascript">
+	function changeStatus(id, status) {
+		const request = new XMLHttpRequest();
+		const button = event.target;
+		const information = 'id='+id+'&type='+status;
+	
+		request.addEventListener("load", function() {
+		  console.log(this.responseText);
+		});    
+		
+		request.open("POST", "UpdateStatusServlet");//parameter를 붙여서 보낼수있음. 
+		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		request.send(information);
+		
+		request.onreadystatechange = function() {
+			if (request.readyState == 4 && request.status == 200) {
+				const clickedCard = button.parentNode;
+				let doList;
+				if(status === "TODO"){//todo->doing
+					button.setAttribute("onClick","changeStatus("+id+",'DOING')")
+					doList = document.querySelector("#doing-list");
+				}else if(status === "DOING"){//doing->done
+					button.remove();
+					doList = document.querySelector("#done-list");
+				}
+				doList.appendChild(clickedCard);
+			}
+		};
+	}
+</script>
+
 </body>
 </html>
