@@ -32,14 +32,7 @@ public class TodoDAO {
 			ps.setString(1, type);
 			try (ResultSet rs = ps.executeQuery();) {
 				while (rs.next()) {
-					Todo selectedTodo = new Todo();
-					selectedTodo.setId(rs.getLong("id"));
-					selectedTodo.setTitle(rs.getString("title"));
-					selectedTodo.setName(rs.getString("name"));
-					selectedTodo.setSequence(rs.getInt("sequence"));
-					selectedTodo.setType(rs.getString("type"));
-					selectedTodo.setRegdate(rs.getTimestamp("regdate"));
-					todos.add(selectedTodo);
+					todos.add(createTodo(rs));
 				}
 			}
 		}
@@ -70,5 +63,17 @@ public class TodoDAO {
 			result = ps.executeUpdate();
 		}
 		return result;
+	}
+
+	private Todo createTodo(ResultSet rs) throws SQLException {
+		Todo selectedTodo = new Todo();
+		selectedTodo.setId(rs.getLong("id"));
+		selectedTodo.setTitle(rs.getString("title"));
+		selectedTodo.setName(rs.getString("name"));
+		selectedTodo.setSequence(rs.getInt("sequence"));
+		selectedTodo.setType(rs.getString("type"));
+		selectedTodo.setRegdate(rs.getTimestamp("regdate"));
+
+		return selectedTodo;
 	}
 }
