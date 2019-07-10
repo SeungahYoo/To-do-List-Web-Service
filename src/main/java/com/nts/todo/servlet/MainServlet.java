@@ -33,11 +33,11 @@ public class MainServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 		request.setAttribute("todos", todos);
 		request.setAttribute("doings", doings);
 		request.setAttribute("dones", dones);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 		requestDispatcher.forward(request, response);
 	}
-
 }
