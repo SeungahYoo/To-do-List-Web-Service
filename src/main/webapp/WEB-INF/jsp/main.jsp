@@ -10,27 +10,29 @@
 <script type="text/javascript">
 
 function changeStatus(id, status) {
-	var oReq = new XMLHttpRequest();
-	var button = event.target;
-	
+	const oReq = new XMLHttpRequest();
+	const button = event.target;
+	const information = 'id='+id+'&type='+status;
+	console.log(information);
 	oReq.addEventListener("load", function() {
 	  console.log(this.responseText);
 	});    
-	oReq.open("post", "UpdateStatusServlet?id="+id+"&type="+status);//parameter를 붙여서 보낼수있음. 
-	oReq.send();
+	oReq.open("POST", "UpdateStatusServlet");//parameter를 붙여서 보낼수있음. 
+	oReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	oReq.send(information);
 	
 	oReq.onreadystatechange = function() {
 		if (oReq.readyState == 4 && oReq.status == 200) {
-			var clicked_card = button.parentNode;
-			var doing_list;
-			if(status==="TODO"){//todo->doing
+			const clickedCard = button.parentNode;
+			let doList;
+			if(status === "TODO"){//todo->doing
 				button.setAttribute("onClick","changeStatus("+id+",'DOING')")
-				doing_list = document.querySelector("#doing-list");
-			}else if(status==="DOING"){//doing->done
+				doList = document.querySelector("#doing-list");
+			}else if(status === "DOING"){//doing->done
 				button.remove();
-				doing_list = document.querySelector("#done-list");
+				doList = document.querySelector("#done-list");
 			}
-			doing_list.appendChild(clicked_card);
+			doList.appendChild(clickedCard);
 		}
 	};
 }

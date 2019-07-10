@@ -2,11 +2,12 @@ package com.nts.todo.dto;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Todo {
 	private long id;
 	private String name;
-	private LocalDate regdate;
+	private LocalDateTime regdate;
 	private int sequence;
 	private String title;
 	private String type;
@@ -32,13 +33,12 @@ public class Todo {
 	}
 
 	public LocalDate getRegdate() {
-		return regdate;
+		//시간은 제외하고 return
+		return regdate.toLocalDate();
 	}
 
 	public void setRegdate(Timestamp tmpDate) {
-		//시간은 제외하고 날짜만 저장
-		LocalDate dateTime = tmpDate.toLocalDateTime().toLocalDate();
-		this.regdate = dateTime;
+		this.regdate = tmpDate.toLocalDateTime();
 	}
 
 	public int getSequence() {
