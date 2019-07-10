@@ -10,19 +10,19 @@
 <script type="text/javascript">
 
 function changeStatus(id, status) {
-	const oReq = new XMLHttpRequest();
+	const request = new XMLHttpRequest();
 	const button = event.target;
 	const information = 'id='+id+'&type='+status;
 	console.log(information);
-	oReq.addEventListener("load", function() {
+	request.addEventListener("load", function() {
 	  console.log(this.responseText);
 	});    
-	oReq.open("POST", "UpdateStatusServlet");//parameter를 붙여서 보낼수있음. 
-	oReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	oReq.send(information);
+	request.open("POST", "UpdateStatusServlet");//parameter를 붙여서 보낼수있음. 
+	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	request.send(information);
 	
-	oReq.onreadystatechange = function() {
-		if (oReq.readyState == 4 && oReq.status == 200) {
+	request.onreadystatechange = function() {
+		if (request.readyState == 4 && request.status == 200) {
 			const clickedCard = button.parentNode;
 			let doList;
 			if(status === "TODO"){//todo->doing
