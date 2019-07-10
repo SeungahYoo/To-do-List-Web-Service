@@ -21,15 +21,12 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		TodoDAO dao = new TodoDAO();
-		List<Todo> todos = null;
-		List<Todo> doings = null;
-		List<Todo> dones = null;
 
 		try {
-			todos = dao.getTodos("TODO");
-			doings = dao.getTodos("DOING");
-			dones = dao.getTodos("DONE");
+			TodoDAO dao = new TodoDAO();
+			List<Todo> todos = dao.getTodos("TODO");
+			List<Todo> doings = dao.getTodos("DOING");
+			List<Todo> dones = dao.getTodos("DONE");
 
 			request.setAttribute("todos", todos);
 			request.setAttribute("doings", doings);
@@ -38,7 +35,7 @@ public class MainServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 
 	}

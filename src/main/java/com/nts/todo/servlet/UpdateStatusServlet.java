@@ -43,6 +43,7 @@ public class UpdateStatusServlet extends HttpServlet {
 		Todo nextTodo = new Todo();
 		nextTodo.setId(todoID);
 		nextTodo.setType(nextStatus);
+
 		try {
 			dao.updateTodo(nextTodo);
 		} catch (SQLException e) {
