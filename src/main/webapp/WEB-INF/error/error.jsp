@@ -10,7 +10,11 @@
 <body>
 	요청 처리 과정에서 에러가 발생하였습니다.
 	<br>
-	<br> 에러 타입 : <%=exception.getClass().getName()%><br>
-	에러 메세지 : <%=exception.getMessage()%>
+	<br> 
+<!-- 	<a href="main.jsp">메인 화면으로 돌아가기</a> -->
+	<%
+		System.out.println("Error Type: "+exception.getClass().getName());
+		System.out.println("Error Message: "+exception.getMessage());
+	%>
 </body>
 </html>
