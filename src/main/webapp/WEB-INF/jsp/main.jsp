@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>나의 해야할 일들</title>
 <link rel="stylesheet" type="text/css" href="css/main.css" />
-
 </head>
 
 <body>

@@ -47,7 +47,9 @@ public class UpdateStatusServlet extends HttpServlet {
 		try {
 			dao.updateTodo(nextTodo);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Error Type: " + e.getClass().getName());
+			System.out.println("Error Message: " + e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 }
