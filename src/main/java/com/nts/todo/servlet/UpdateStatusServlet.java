@@ -19,6 +19,12 @@ public class UpdateStatusServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
 		long todoID = Long.parseLong(request.getParameter("id"));
 		String status = request.getParameter("type");
 		TodoDAO dao = new TodoDAO();
@@ -37,13 +43,6 @@ public class UpdateStatusServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
-		System.out.println("dopost");
-		;
 	}
 
 }

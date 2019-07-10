@@ -21,7 +21,6 @@ public class TodoDAO {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public List<Todo> getTodos(String type) throws SQLException {
@@ -44,7 +43,6 @@ public class TodoDAO {
 				}
 			}
 		}
-
 		return todos;
 	}
 
@@ -65,7 +63,6 @@ public class TodoDAO {
 	public int updateTodo(Todo todo) throws SQLException {
 		int result = 0;
 		String sql = "UPDATE todo SET type = ? WHERE id = ?";
-		//sql = "update todo set type = 'DONE' where id = ?";
 		try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 			PreparedStatement ps = conn.prepareStatement(sql);) {
 			ps.setString(1, todo.getType());
