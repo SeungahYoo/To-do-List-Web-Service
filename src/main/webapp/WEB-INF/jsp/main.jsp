@@ -74,18 +74,20 @@
 		request.send(information);
 		
 		request.onreadystatechange = function() {
-			if (request.readyState == 4 && request.status == 200) {
-				const clickedCard = button.parentNode;
-				let doList;
-				if(status === "TODO"){//todo->doing
-					button.setAttribute("onClick","changeStatus("+id+",'DOING')")
-					doList = document.querySelector("#doing-list");
-				}else if(status === "DOING"){//doing->done
-					button.remove();
-					doList = document.querySelector("#done-list");
-				}
-				doList.appendChild(clickedCard);
+			if(request.readyState != 4 || request.status != 200) return;
+			
+			const clickedCard = button.parentNode;
+			let doList;
+			
+			if(status === "TODO"){//todo->doing
+				button.setAttribute("onClick","changeStatus("+id+",'DOING')")
+				doList = document.querySelector("#doing-list");
+			}else if(status === "DOING"){//doing->done
+				button.remove();
+				doList = document.querySelector("#done-list");
 			}
+			doList.appendChild(clickedCard);
+			
 		};
 	}
 </script>
