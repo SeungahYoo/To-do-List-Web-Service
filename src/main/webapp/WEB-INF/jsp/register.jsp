@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"">
+<meta charset="UTF-8">
 <title>할일 등록</title>
 <link rel="stylesheet" type="text/css" href="css/register.css" />
 </head>
