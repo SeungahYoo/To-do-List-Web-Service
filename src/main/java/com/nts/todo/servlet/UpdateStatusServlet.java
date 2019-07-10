@@ -14,7 +14,6 @@ import com.nts.todo.dto.Todo;
 
 @WebServlet("/UpdateStatusServlet")
 public class UpdateStatusServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,7 +41,5 @@ public class UpdateStatusServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

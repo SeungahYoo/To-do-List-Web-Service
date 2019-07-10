@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>나의 해야할 일들</title>
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <script type="text/javascript">
@@ -12,11 +12,13 @@
 function changeStatus(id, status) {
 	var oReq = new XMLHttpRequest();
 	var button = event.target;
+	
 	oReq.addEventListener("load", function() {
 	  console.log(this.responseText);
 	});    
 	oReq.open("post", "UpdateStatusServlet?id="+id+"&type="+status);//parameter를 붙여서 보낼수있음. 
 	oReq.send();
+	
 	oReq.onreadystatechange = function() {
 		if (oReq.readyState == 4 && oReq.status == 200) {
 			var clicked_card = button.parentNode;
@@ -24,16 +26,17 @@ function changeStatus(id, status) {
 			if(status==="TODO"){//todo->doing
 				button.setAttribute("onClick","changeStatus("+id+",'DOING')")
 				doing_list = document.querySelector("#doing-list");
-			}else if(status==="DOING"){//doing-done
+			}else if(status==="DOING"){//doing->done
 				button.remove();
 				doing_list = document.querySelector("#done-list");
 			}
 			doing_list.appendChild(clicked_card);
 		}
 	};
-	}
+}
 </script>
 </head>
+
 <body>
 	<div id="container">
 		<header>
@@ -56,7 +59,7 @@ function changeStatus(id, status) {
 				</c:forEach>
 
 			</div>
-			
+
 			<div class="list" id="doing-list">
 				<div class="status">DOING</div>
 				<c:forEach var="doing" items="${doings }">
