@@ -24,7 +24,7 @@
 				<c:forEach var="todo" items="${todos }">
 					<div class="card">
 						<div class="content">${todo.title }</div>
-						<div class="detail">등록날짜 ${todo.regdate }, ${todo.name },
+						<div class="detail">등록날짜 ${todo.regdateForView }, ${todo.name },
 							우선순위 ${todo.sequence }</div>
 						<button class="next-btn"
 							onclick="changeStatus(${todo.id},'${todo.type}')">→</button>
@@ -38,7 +38,7 @@
 				<c:forEach var="doing" items="${doings }">
 					<div class="card">
 						<div class="content">${doing.title }</div>
-						<div class="detail">등록날짜 ${doing.regdate }, ${doing.name },
+						<div class="detail">등록날짜 ${doing.regdateForView  }, ${doing.name },
 							우선순위 ${doing.sequence }</div>
 						<button class="next-btn"
 							onclick="changeStatus(${doing.id},'${doing.type}')">→</button>
@@ -51,7 +51,7 @@
 				<c:forEach var="done" items="${dones }">
 					<div class="card">
 						<div class="content">${done.title }</div>
-						<div class="detail">등록날짜 ${done.regdate }, ${done.name },
+						<div class="detail">등록날짜 ${done.regdateForView  }, ${done.name },
 							우선순위 ${done.sequence }</div>
 					</div>
 				</c:forEach>

@@ -32,7 +32,11 @@ public class Todo {
 		this.name = name;
 	}
 
-	public LocalDate getRegdate() {
+	public LocalDateTime getRegdate() {
+		return regdate;
+	}
+
+	public LocalDate getRegdateForView() {
 		//시간은 제외하고 return
 		return regdate.toLocalDate();
 	}
