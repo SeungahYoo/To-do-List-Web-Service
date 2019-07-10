@@ -15,7 +15,7 @@
 		<header>
 			<div id="title">나의 해야할 일들</div>
 			<div class="new-btn" style="float: right;">
-				<a href="RegisterServlet">새로운 TODO 등록</a>
+				<a href="RegisterForm">새로운 TODO 등록</a>
 			</div>
 		</header>
 		<section>
