@@ -11,7 +11,6 @@
 		<center>
 			<h1>할일 등록</h1>
 		</center>
-
 		<form action="InsertTodoServlet" method="post">
 			<div class="question">
 				어떤일인가요?<br> <input name="title" maxlength="24" size="50"
@@ -25,14 +24,12 @@
 				<input type="radio" name="sequence" value="2">2순위 <input
 					type="radio" name="sequence" value="3">3순위
 			</div>
-
 			<div class="buttons">
 				<div class="btn back">
 					<a href="MainServlet "> &lt; 이전</a>
 				</div>
 				<button class="btn blue" type="reset">내용지우기</button>
 				<button class="btn blue" type="submit">제출</button>
-				
 			</div>
 		</form>
 	</section>
