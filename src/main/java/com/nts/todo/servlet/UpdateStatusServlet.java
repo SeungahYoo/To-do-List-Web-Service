@@ -25,15 +25,21 @@ public class UpdateStatusServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 		long todoID = Long.parseLong(request.getParameter("id"));
-		System.out.println(request.getParameter("id"));
 		String status = request.getParameter("type");
 		TodoDAO dao = new TodoDAO();
 		String nextStatus = "";
-		if (status != null && status.equals("TODO")) {
-			nextStatus = "DOING";
-		} else if (status != null && status.equals("DOING")) {
-			nextStatus = "DONE";
+
+		switch (status) {
+			case "TODE":
+				nextStatus = "DOING";
+				break;
+			case "DOING":
+				nextStatus = "DONE";
+				break;
+			default: //Null인 경우
+				throw new NullPointerException("Status is NULL");
 		}
+
 		Todo nextTodo = new Todo();
 		nextTodo.setId(todoID);
 		nextTodo.setType(nextStatus);
