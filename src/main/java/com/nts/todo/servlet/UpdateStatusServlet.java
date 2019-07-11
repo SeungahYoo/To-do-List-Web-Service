@@ -28,7 +28,6 @@ public class UpdateStatusServlet extends HttpServlet {
 		String status = request.getParameter("type");
 		TodoDAO dao = new TodoDAO();
 		String nextStatus = "";
-
 		switch (status) {
 			case "TODO":
 				nextStatus = "DOING";
@@ -36,8 +35,8 @@ public class UpdateStatusServlet extends HttpServlet {
 			case "DOING":
 				nextStatus = "DONE";
 				break;
-			default: //Null인 경우
-				throw new IllegalArgumentException("status: " + status);
+			default:
+				throw new IllegalArgumentException("유효하지 않은 type");
 		}
 
 		Todo nextTodo = new Todo();
