@@ -30,7 +30,7 @@ public class UpdateStatusServlet extends HttpServlet {
 		String nextStatus = "";
 
 		switch (status) {
-			case "TODE":
+			case "TODO":
 				nextStatus = "DOING";
 				break;
 			case "DOING":
