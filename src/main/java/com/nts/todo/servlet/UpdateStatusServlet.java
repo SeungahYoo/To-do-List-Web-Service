@@ -37,7 +37,7 @@ public class UpdateStatusServlet extends HttpServlet {
 				nextStatus = "DONE";
 				break;
 			default: //Null인 경우
-				throw new NullPointerException("Status is NULL");
+				throw new IllegalArgumentException("status: " + status);
 		}
 
 		Todo nextTodo = new Todo();
