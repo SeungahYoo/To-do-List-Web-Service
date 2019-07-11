@@ -23,10 +23,10 @@
 				<c:forEach var="todo" items="${todos }">
 					<div class="card">
 						<div class="content">${todo.title }</div>
-						<div class="detail">등록날짜 ${todo.regdateForView }, ${todo.name },
-							우선순위 ${todo.sequence }</div>
-						<button class="next-btn"
-							onclick="changeStatus(${todo.id},'${todo.type}')">→</button>
+						<div class="detail">등록날짜 ${todo.regdateForView },
+							${todo.name }, 우선순위 ${todo.sequence }</div>
+						<button class="next-btn" data-id="${todo.id }"
+							data-type="${todo.type }">→</button>
 					</div>
 				</c:forEach>
 
@@ -37,10 +37,10 @@
 				<c:forEach var="doing" items="${doings }">
 					<div class="card">
 						<div class="content">${doing.title }</div>
-						<div class="detail">등록날짜 ${doing.regdateForView  }, ${doing.name },
-							우선순위 ${doing.sequence }</div>
-						<button class="next-btn"
-							onclick="changeStatus(${doing.id},'${doing.type}')">→</button>
+						<div class="detail">등록날짜 ${doing.regdateForView  },
+							${doing.name }, 우선순위 ${doing.sequence }</div>
+						<button class="next-btn" data-id="${doing.id }"
+							data-type="${doing.type }">→</button>
 					</div>
 				</c:forEach>
 			</div>
@@ -50,8 +50,8 @@
 				<c:forEach var="done" items="${dones }">
 					<div class="card">
 						<div class="content">${done.title }</div>
-						<div class="detail">등록날짜 ${done.regdateForView  }, ${done.name },
-							우선순위 ${done.sequence }</div>
+						<div class="detail">등록날짜 ${done.regdateForView  },
+							${done.name }, 우선순위 ${done.sequence }</div>
 					</div>
 				</c:forEach>
 			</div>
@@ -59,36 +59,38 @@
 	</div>
 
 	<script type="text/javascript">
-	function changeStatus(id, status) {
-		const request = new XMLHttpRequest();
-		const button = event.target;
-		const information = 'id='+id+'&type='+status;
+	const request = new XMLHttpRequest();
+	var Buttons = document.querySelectorAll("button");
+	Buttons.forEach((event)=>{
+	    event.addEventListener("click",changeStatus)
+	});
 	
-		request.addEventListener("load", function() {
-		  console.log(this.responseText);
-		});    
+	
+	function changeStatus() {
+		const information = 'id='+this.dataset.id+'&type='+this.dataset.type;
 		
 		request.open("POST", "UpdateStatusServlet");//parameter를 붙여서 보낼수있음. 
 		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		request.send(information);
 		
-		request.onreadystatechange = function() {
-			if(request.readyState !== 4 || request.status !== 200) return;
-			
-			const clickedCard = button.parentNode;
-			let doList;
-			
-			if(status === "TODO"){//todo->doing
-				button.setAttribute("onClick","changeStatus("+id+",'DOING')")
-				doList = document.querySelector("#doing-list");
-			}else if(status === "DOING"){//doing->done
-				button.remove();
-				doList = document.querySelector("#done-list");
-			}
-			doList.appendChild(clickedCard);
-			
-		};
+		const clickedCard = this.parentNode;
+		let doList;
+		
+		if(this.dataset.type === "TODO"){//todo->doing
+			doList = document.querySelector("#doing-list");
+		}else if(this.dataset.type === "DOING"){//doing->done
+			this.remove();
+			doList = document.querySelector("#done-list");
+		}
+		doList.appendChild(clickedCard);
+
 	}
+
+	request.onreadystatechange = function() {
+		if(request.readyState !== 4 || request.status !== 200) return;
+
+		
+	};
 </script>
 
 </body>
