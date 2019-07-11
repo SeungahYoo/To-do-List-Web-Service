@@ -59,11 +59,13 @@
 	</div>
 
 <script type="text/javascript">
-	var Buttons = document.querySelectorAll("button");
 
-	Buttons.forEach((event)=>{
-	    event.addEventListener("click",changeStatus)
-	});
+	function init(){
+		var Buttons = document.querySelectorAll("button");
+		Buttons.forEach((event)=>{
+		    event.addEventListener("click",changeStatus)
+		});
+	}
 	
 	function changeStatus() {
 		const button = this;
@@ -90,6 +92,11 @@
 			doList.appendChild(clickedCard);
 		};
 	}
+	
+	document.addEventListener("DOMContentLoaded",function(){
+		console.log("DOM Loaded");
+		init();
+	})
 
 </script>
 </body>
