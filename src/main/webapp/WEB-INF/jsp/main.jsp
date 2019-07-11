@@ -58,40 +58,39 @@
 		</section>
 	</div>
 
-	<script type="text/javascript">
-	const request = new XMLHttpRequest();
+<script type="text/javascript">
 	var Buttons = document.querySelectorAll("button");
+
 	Buttons.forEach((event)=>{
 	    event.addEventListener("click",changeStatus)
 	});
 	
-	
 	function changeStatus() {
-		const information = 'id='+this.dataset.id+'&type='+this.dataset.type;
+		const button = this;
+		const request = new XMLHttpRequest();
+		const information = 'id='+button.dataset.id+'&type='+button.dataset.type;
 		
 		request.open("POST", "UpdateStatusServlet");//parameter를 붙여서 보낼수있음. 
 		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		request.send(information);
 		
-		const clickedCard = this.parentNode;
+		const clickedCard = button.parentNode;
 		let doList;
 		
-		if(this.dataset.type === "TODO"){//todo->doing
-			doList = document.querySelector("#doing-list");
-		}else if(this.dataset.type === "DOING"){//doing->done
-			this.remove();
-			doList = document.querySelector("#done-list");
-		}
-		doList.appendChild(clickedCard);
-
+		request.onreadystatechange = function() {
+			if(request.readyState !== 4 || request.status !== 200) return;
+		
+			if(button.dataset.type === "TODO"){//todo->doing
+				doList = document.querySelector("#doing-list");
+				button.dataset.type = "DOING";
+			}else if(button.dataset.type === "DOING"){//doing->done
+				button.remove();
+				doList = document.querySelector("#done-list");
+			}
+			doList.appendChild(clickedCard);
+		};
 	}
 
-	request.onreadystatechange = function() {
-		if(request.readyState !== 4 || request.status !== 200) return;
-
-		
-	};
 </script>
-
 </body>
 </html>
