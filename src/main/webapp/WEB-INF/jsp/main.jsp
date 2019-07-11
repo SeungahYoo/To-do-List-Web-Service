@@ -73,7 +73,7 @@
 		request.send(information);
 		
 		request.onreadystatechange = function() {
-			if(request.readyState != 4 || request.status != 200) return;
+			if(request.readyState !== 4 || request.status !== 200) return;
 			
 			const clickedCard = button.parentNode;
 			let doList;
