@@ -14,10 +14,6 @@
 		<location>/WEB-INF/error/errorNull.jsp</location>
 	</error-page>
 	<error-page>
-		<exception-type>java.lang.ArithmeticException</exception-type>
-		<location>/WEB-INF/error/errorHandler</location>
-	</error-page>
-	<error-page>
 		<location>/WEB-INF/error/error.jsp</location>
 	</error-page>
 

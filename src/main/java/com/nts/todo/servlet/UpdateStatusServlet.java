@@ -23,11 +23,12 @@ public class UpdateStatusServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
+		throws ServletException, IOException, NullPointerException {
 		long todoID = Long.parseLong(request.getParameter("id"));
 		String status = request.getParameter("type");
 		TodoDAO dao = new TodoDAO();
 		String nextStatus = "";
+
 		switch (status) {
 			case "TODO":
 				nextStatus = "DOING";
