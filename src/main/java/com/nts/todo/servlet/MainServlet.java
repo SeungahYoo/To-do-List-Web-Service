@@ -25,7 +25,7 @@ public class MainServlet extends HttpServlet {
 
 			request.setAttribute("todos", dao.getTodos("TODO"));
 			request.setAttribute("doings", dao.getTodos("DOING"));
-			request.setAttribute("dones", dao.getTodos("DOING"));
+			request.setAttribute("dones", dao.getTodos("DONE"));
 
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 			requestDispatcher.forward(request, response);
