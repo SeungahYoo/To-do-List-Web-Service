@@ -13,17 +13,19 @@
 		</center>
 		<form action="insert-todo" method="post">
 			<div class="question">
-				어떤일인가요?<br> <input name="title" maxlength="24" size="50"
+				어떤일인가요?<br> 
+				<input name="title" maxlength="24" size="50"
 					placeholder="swift공부하기(24자까지)" required="required"/>
 			</div>
 			<div class="question">
-				누가 할 일인가요?<br> <input name="name" size="50" placeholder="홍길동" required="required"/>
+				누가 할 일인가요?<br> 
+				<input name="name" size="50" placeholder="홍길동" required="required"/>
 			</div>
 			<div class="question">
 				우선 순위를 선택하세요<br> 
-				<label><input type="radio" name="sequence" value="1" required="required"/>1순위</label>
-				<label><input type="radio" name="sequence" value="2" required="required"/>2순위</label>
-				<label><input type="radio" name="sequence" value="3" required="required"/>3순위</label>
+				<label><input type="radio" name="sequence" value="1" required/>1순위</label>
+				<label><input type="radio" name="sequence" value="2" required/>2순위</label>
+				<label><input type="radio" name="sequence" value="3" required/>3순위</label>
 			</div>
 			<div class="buttons">
 				<div class="btn back">
