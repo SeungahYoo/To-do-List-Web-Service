@@ -21,7 +21,6 @@ public class UpdateStatusServlet extends HttpServlet {
 		long todoID = Long.parseLong(request.getParameter("id"));
 		String status = request.getParameter("type");
 		TodoDAO dao = new TodoDAO();
-
 		if (!status.equals("TODO") && !status.equals("DOING")) {
 			response.setStatus(400);
 			return;
