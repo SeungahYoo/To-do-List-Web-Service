@@ -81,8 +81,11 @@
 		let doList;
 		
 		request.onreadystatechange = function() {
-			if(request.readyState !== 4 || request.status !== 200) return;
-			console.log(request.status);
+			if(request.status>=400){
+				alert("오류가 발생했습니다. 다시 시도하세요");
+				return;
+			}
+			
 			if(button.dataset.type === "TODO"){//todo->doing
 				doList = document.querySelector("#doing-list");
 				button.dataset.type = "DOING";
@@ -95,7 +98,6 @@
 	}
 	
 	document.addEventListener("DOMContentLoaded",function(){
-		console.log("DOM Loaded");
 		init();
 	})
 
