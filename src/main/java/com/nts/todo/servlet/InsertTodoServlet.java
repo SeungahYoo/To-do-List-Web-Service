@@ -26,7 +26,9 @@ public class InsertTodoServlet extends HttpServlet {
 		} catch (SQLException e) {
 			System.out.println("Error Type: " + e.getClass().getName());
 			System.out.println("Error Message: " + e.getMessage());
-			throw new RuntimeException(e);
+
+			response.getOutputStream()
+				.println("<script>alert('등록에 실패했습니다. 다시 시도해주세요'); location.href='main';</script>");
 		}
 
 	}

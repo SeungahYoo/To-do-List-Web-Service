@@ -26,13 +26,12 @@ public class MainServlet extends HttpServlet {
 			request.setAttribute("todos", dao.getTodos("TODO"));
 			request.setAttribute("doings", dao.getTodos("DOING"));
 			request.setAttribute("dones", dao.getTodos("DONE"));
-
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (SQLException e) {
 			System.out.println("Error Type: " + e.getClass().getName());
 			System.out.println("Error Message: " + e.getMessage());
-			throw new RuntimeException(e);
+			response.getOutputStream().println("<script>alert('데이터 로드 실패');</script>");
 		}
 
 	}
