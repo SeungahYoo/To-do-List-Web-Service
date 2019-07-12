@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.nts.todo.dao.TodoDAO;
 import com.nts.todo.dto.Todo;
 
-@WebServlet("/UpdateStatusServlet")
+@WebServlet("/update-status")
 public class UpdateStatusServlet extends HttpServlet {
 
 	@Override

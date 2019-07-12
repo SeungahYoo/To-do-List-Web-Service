@@ -11,7 +11,7 @@
 		<center>
 			<h1>할일 등록</h1>
 		</center>
-		<form action="InsertTodoServlet" method="post">
+		<form action="insert-todo" method="post">
 			<div class="question">
 				어떤일인가요?<br> <input name="title" maxlength="24" size="50"
 					placeholder="swift공부하기(24자까지)" required="required"/>

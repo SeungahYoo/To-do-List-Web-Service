@@ -15,7 +15,7 @@
 		<header>
 			<div id="title">나의 해야할 일들</div>
 			<div class="new-btn" style="float: right;">
-				<a href="RegisterForm">새로운 TODO 등록</a>
+				<a href="registerform">새로운 TODO 등록</a>
 			</div>
 		</header>
 		<section>
@@ -73,7 +73,7 @@
 		const request = new XMLHttpRequest();
 		const information = 'id='+button.dataset.id+'&type='+button.dataset.type;
 		
-		request.open("POST", "UpdateStatusServlet");//parameter를 붙여서 보낼수있음. 
+		request.open("POST", "update-status");//parameter를 붙여서 보낼수있음. 
 		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		request.send(information);
 		
