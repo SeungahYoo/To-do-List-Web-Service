@@ -62,7 +62,7 @@
 <script type="text/javascript">
 
 	function init(){
-		var Buttons = document.querySelectorAll("button");
+		const Buttons = document.querySelectorAll("button");
 		Buttons.forEach((event)=>{
 		    event.addEventListener("click",changeStatus)
 		});
@@ -82,7 +82,7 @@
 		
 		request.onreadystatechange = function() {
 			if(request.readyState !== 4 || request.status !== 200) return;
-		
+			console.log(request.status);
 			if(button.dataset.type === "TODO"){//todo->doing
 				doList = document.querySelector("#doing-list");
 				button.dataset.type = "DOING";

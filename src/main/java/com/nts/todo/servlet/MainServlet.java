@@ -2,7 +2,6 @@ package com.nts.todo.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.nts.todo.dao.TodoDAO;
-import com.nts.todo.dto.Todo;
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
@@ -24,13 +22,10 @@ public class MainServlet extends HttpServlet {
 
 		try {
 			TodoDAO dao = new TodoDAO();
-			List<Todo> todos = dao.getTodos("TODO");
-			List<Todo> doings = dao.getTodos("DOING");
-			List<Todo> dones = dao.getTodos("DONE");
 
-			request.setAttribute("todos", todos);
-			request.setAttribute("doings", doings);
-			request.setAttribute("dones", dones);
+			request.setAttribute("todos", dao.getTodos("TODO"));
+			request.setAttribute("doings", dao.getTodos("DOING"));
+			request.setAttribute("dones", dao.getTodos("DOING"));
 
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 			requestDispatcher.forward(request, response);

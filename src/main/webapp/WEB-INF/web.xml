@@ -7,14 +7,14 @@
 
 	<error-page>
 		<error-code>404</error-code>
-		<location>/WEB-INF/error/error404.jsp</location>
+		<location>/WEB-INF/jsp/error/error404.jsp</location>
 	</error-page>
 	<error-page>
-		<exception-type>java.lang.NullPionterException</exception-type>
-		<location>/WEB-INF/error/errorNull.jsp</location>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/WEB-INF/jsp/error/errorNull.jsp</location>
 	</error-page>
 	<error-page>
-		<location>/WEB-INF/error/error.jsp</location>
+		<location>/WEB-INF/jsp/error/error.jsp</location>
 	</error-page>
 
 </web-app>

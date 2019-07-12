@@ -16,29 +16,29 @@ import com.nts.todo.dto.Todo;
 public class UpdateStatusServlet extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException, NullPointerException {
 		long todoID = Long.parseLong(request.getParameter("id"));
 		String status = request.getParameter("type");
 		TodoDAO dao = new TodoDAO();
-		String nextStatus = "";
 
-		switch (status) {
-			case "TODO":
-				nextStatus = "DOING";
-				break;
-			case "DOING":
-				nextStatus = "DONE";
-				break;
-			default:
-				throw new IllegalArgumentException("유효하지 않은 type");
+		if (!status.equals("TODO") && !status.equals("DOING")) {
+			response.setStatus(400);
+			return;
 		}
+
+		String nextStatus = (status.equals("TODO")) ? "DOING" : "DONE";
+
+		//		switch (status) {
+		//				case "TODO":
+		//					nextStatus = "DOING";
+		//					break;
+		//				case "DOING":
+		//					nextStatus = "DONE";
+		//					break;
+		//				default:
+		//					throw new IllegalArgumentException("유효하지 않은 type");
+		//			}
 
 		Todo nextTodo = new Todo();
 		nextTodo.setId(todoID);
