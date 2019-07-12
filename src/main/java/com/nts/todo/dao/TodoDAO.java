@@ -10,6 +10,13 @@ import java.util.List;
 
 import com.nts.todo.dto.Todo;
 
+/***
+ *
+ * @author 유승아
+ * @version 1.0
+ * DB와 연동하여 데이터를 처리하는 DAO
+ *
+ */
 public class TodoDAO {
 	private static String DB_URL = "jdbc:mysql://10.113.116.52:13306/user10?useSSL=false";
 	private static String DB_USER = "user10";

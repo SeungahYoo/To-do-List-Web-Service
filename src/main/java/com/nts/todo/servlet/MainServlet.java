@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.nts.todo.dao.TodoDAO;
 import com.nts.todo.dto.Todo;
 
-@WebServlet("/MainServlet")
+@WebServlet("/main")
 public class MainServlet extends HttpServlet {
 
 	@Override

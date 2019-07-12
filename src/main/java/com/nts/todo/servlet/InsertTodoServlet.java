@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.nts.todo.dao.TodoDAO;
 import com.nts.todo.dto.Todo;
 
-@WebServlet("/InsertTodoServlet")
+@WebServlet("/insert-todo")
 public class InsertTodoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -28,7 +28,7 @@ public class InsertTodoServlet extends HttpServlet {
 		try {
 			TodoDAO dao = new TodoDAO();
 			dao.addTodo(createTodo(request));
-			response.sendRedirect("MainServlet");
+			response.sendRedirect("main");
 		} catch (SQLException e) {
 			System.out.println("Error Type: " + e.getClass().getName());
 			System.out.println("Error Message: " + e.getMessage());
