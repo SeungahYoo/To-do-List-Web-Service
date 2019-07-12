@@ -36,12 +36,19 @@ public class Todo {
 		return regdate;
 	}
 
-	public LocalDate getRegdateForView() throws NullPointerException {
+	public LocalDate getRegdateForView() {
 		//시간은 제외하고 return
+		regdate = null;
+		if (regdate == null) {
+			return null;
+		}
 		return regdate.toLocalDate();
 	}
 
-	public void setRegdate(Timestamp tmpDate) throws NullPointerException {
+	public void setRegdate(Timestamp tmpDate) {
+		if (tmpDate == null) {
+			return;
+		}
 		this.regdate = tmpDate.toLocalDateTime();
 	}
 
