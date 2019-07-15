@@ -3,6 +3,7 @@ package com.nts.todo.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,16 +18,20 @@ public class UpdateStatusServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException, NullPointerException {
+		throws ServletException, IOException {
+		ServletContext servletContext = this.getServletContext();
+
 		try {
 			long todoID = Long.parseLong(request.getParameter("id"));
 			String status = request.getParameter("type");
-			if (!status.equals("TODO") && !status.equals("DOING")) {
+
+			if (status.equals("TODO") == false && status.equals("DOING") == false) {//status가 "TODE"도 아니고, "DOING"도 아닐 때.
 				System.out.println("유효하지 않은 status");
 				response.setStatus(400);
 				return;
 			}
-			TodoDAO dao = new TodoDAO();
+
+			TodoDAO dao = (TodoDAO)servletContext.getAttribute("dao");
 			String nextStatus = (status.equals("TODO")) ? "DOING" : "DONE";
 			Todo nextTodo = new Todo();
 
@@ -34,8 +39,7 @@ public class UpdateStatusServlet extends HttpServlet {
 			nextTodo.setType(nextStatus);
 			dao.updateTodo(nextTodo);
 		} catch (SQLException e) {
-			System.out.println("Error Type: " + e.getClass().getName());
-			System.out.println("Error Message: " + e.getMessage());
+			e.printStackTrace();
 			response.setStatus(400);
 			return;
 		}

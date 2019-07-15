@@ -23,13 +23,12 @@ public class TodoDAO {
 	private static String DB_PASSWORD = "user10";
 
 	public TodoDAO() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			System.out.println("Error Type: " + e.getClass().getName());
-			System.out.println("Error Message: " + e.getMessage());
-			throw new RuntimeException(e);
-		}
+		//		try {
+		//			Class.forName("com.mysql.jdbc.Driver");
+		//		} catch (ClassNotFoundException e) {
+		//			e.printStackTrace();
+		//			throw new RuntimeException(e);
+		//		}
 	}
 
 	public List<Todo> getTodos(String type) throws SQLException {

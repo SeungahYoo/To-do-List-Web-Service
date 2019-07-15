@@ -38,7 +38,6 @@ public class Todo {
 
 	public LocalDate getRegdateForView() {
 		//시간은 제외하고 return
-		regdate = null;
 		if (regdate == null) {
 			return null;
 		}
@@ -46,8 +45,8 @@ public class Todo {
 	}
 
 	public void setRegdate(Timestamp tmpDate) {
-		if (tmpDate == null) {
-			return;
+		if (tmpDate != null) {
+			this.regdate = tmpDate.toLocalDateTime();
 		}
 		this.regdate = tmpDate.toLocalDateTime();
 	}

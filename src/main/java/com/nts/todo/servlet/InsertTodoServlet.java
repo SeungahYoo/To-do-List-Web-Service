@@ -3,6 +3,7 @@ package com.nts.todo.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +19,14 @@ public class InsertTodoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		ServletContext servletContext = this.getServletContext();
 
 		try {
-			TodoDAO dao = new TodoDAO();
+			TodoDAO dao = (TodoDAO)servletContext.getAttribute("dao");
 			dao.addTodo(createTodo(request));
 			response.sendRedirect("main");
 		} catch (SQLException e) {
-			System.out.println("Error Type: " + e.getClass().getName());
-			System.out.println("Error Message: " + e.getMessage());
+			e.printStackTrace();
 
 			response.getOutputStream()
 				.println("<script>alert('등록에 실패했습니다. 다시 시도해주세요'); location.href='main';</script>");
