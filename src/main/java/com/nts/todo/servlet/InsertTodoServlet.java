@@ -3,7 +3,6 @@ package com.nts.todo.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +18,9 @@ public class InsertTodoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		ServletContext servletContext = this.getServletContext();
 
 		try {
-			TodoDAO dao = (TodoDAO)servletContext.getAttribute("dao");
+			TodoDAO dao = TodoDAO.getInstance();
 			dao.addTodo(createTodo(request));
 			response.sendRedirect("main");
 		} catch (SQLException e) {
