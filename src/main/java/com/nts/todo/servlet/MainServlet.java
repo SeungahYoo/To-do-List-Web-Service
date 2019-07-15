@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,9 +20,10 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		ServletContext servletContext = this.getServletContext();
 
 		try {
-			TodoDAO dao = new TodoDAO();
+			TodoDAO dao = (TodoDAO)servletContext.getAttribute("dao");
 
 			request.setAttribute("todos", dao.getTodos("TODO"));
 			request.setAttribute("doings", dao.getTodos("DOING"));
@@ -29,8 +31,7 @@ public class MainServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/jsp/main.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (SQLException e) {
-			System.out.println("Error Type: " + e.getClass().getName());
-			System.out.println("Error Message: " + e.getMessage());
+			e.printStackTrace();
 			response.getOutputStream().println("<script>alert('데이터 로드 실패');</script>");
 		}
 

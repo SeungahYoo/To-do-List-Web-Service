@@ -12,6 +12,13 @@
 	<error-page>
 		<location>/WEB-INF/jsp/error/error.jsp</location>
 	</error-page>
-
+	
+	<listener>
+		<listener-class>com.nts.todo.loader.InitListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>jdbcDriver</param-name>
+		<param-value>com.mysql.jdbc.Driver</param-value>
+	</context-param>
 </web-app>
 
