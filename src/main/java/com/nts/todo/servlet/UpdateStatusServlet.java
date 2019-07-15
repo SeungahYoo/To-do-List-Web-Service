@@ -3,7 +3,6 @@ package com.nts.todo.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,6 @@ public class UpdateStatusServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
-		ServletContext servletContext = this.getServletContext();
 
 		try {
 			long todoID = Long.parseLong(request.getParameter("id"));
@@ -31,7 +29,7 @@ public class UpdateStatusServlet extends HttpServlet {
 				return;
 			}
 
-			TodoDAO dao = (TodoDAO)servletContext.getAttribute("dao");
+			TodoDAO dao = TodoDAO.getInstance();
 			String nextStatus = (status.equals("TODO")) ? "DOING" : "DONE";
 			Todo nextTodo = new Todo();
 

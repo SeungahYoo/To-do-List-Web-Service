@@ -4,8 +4,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import com.nts.todo.dao.TodoDAO;
-
 public class InitListener implements ServletContextListener {
 
 	@Override
@@ -13,8 +11,6 @@ public class InitListener implements ServletContextListener {
 		ServletContext context = sce.getServletContext();
 
 		try {
-			TodoDAO dao = new TodoDAO();
-			context.setAttribute("dao", dao);
 			String driver = context.getInitParameter("jdbcDriver");
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
@@ -25,8 +21,7 @@ public class InitListener implements ServletContextListener {
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
-		ServletContext context = sce.getServletContext();
-		context.removeAttribute("dao");
+
 	}
 
 }
