@@ -19,6 +19,7 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		//		System.out.println(response.getStatus());
 
 		try {
 			TodoDAO dao = TodoDAO.getInstance();
@@ -33,5 +34,12 @@ public class MainServlet extends HttpServlet {
 			throw new RuntimeException("데이터 로딩 실패");
 		}
 
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+		System.out.println(request.getAttribute("InsertFailed"));
+		this.doGet(request, response);
 	}
 }

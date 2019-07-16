@@ -3,13 +3,13 @@ package com.nts.todo.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.nts.todo.dao.TodoDAO;
 import com.nts.todo.dto.Todo;
 
 @WebServlet("/insert-todo")
@@ -20,14 +20,17 @@ public class InsertTodoServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		try {
-			TodoDAO dao = TodoDAO.getInstance();
-			dao.addTodo(createTodo(request));
-			response.sendRedirect("main");
+			//			TodoDAO dao = TodoDAO.getInstance();
+			//			dao.addTodo(createTodo(request));
+			//			response.sendRedirect("main");
+			throw new SQLException();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			request.setAttribute("InsertFailed", true);
 
-			response.getOutputStream()
-				.println("<script>alert('등록에 실패했습니다. 다시 시도해주세요'); location.href='main';</script>");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("main");
+			requestDispatcher.forward(request, response);
+
 		}
 
 	}

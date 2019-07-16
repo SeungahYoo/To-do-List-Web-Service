@@ -58,7 +58,10 @@
 			</div>
 		</section>
 	</div>
-
+	
+	<c:if test="${InsertFailed eq true}">
+		<script>alert('등록 중 오류가 발생했습니다. 다시 시도해주세요.');</script>
+	</c:if>
 	<script type="text/javascript" src="js/ajax.js"></script>
 </body>
 </html>
