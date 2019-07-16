@@ -1,6 +1,5 @@
 package com.nts.todo.dto;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -44,11 +43,8 @@ public class Todo {
 		return null;
 	}
 
-	public void setRegdate(Timestamp tmpDate) {
-		if (tmpDate != null) {
-			this.regdate = tmpDate.toLocalDateTime();
-		}
-		this.regdate = tmpDate.toLocalDateTime();
+	public void setRegdate(LocalDateTime regdate) {
+		this.regdate = regdate;
 	}
 
 	public int getSequence() {

@@ -82,7 +82,9 @@ public class TodoDAO {
 		selectedTodo.setName(rs.getString("name"));
 		selectedTodo.setSequence(rs.getInt("sequence"));
 		selectedTodo.setType(rs.getString("type"));
-		selectedTodo.setRegdate(rs.getTimestamp("regdate"));
+		if (rs.getTimestamp("regdate") != null) {
+			selectedTodo.setRegdate(rs.getTimestamp("regdate").toLocalDateTime());
+		}
 
 		return selectedTodo;
 	}
