@@ -23,9 +23,9 @@ public class UpdateStatusServlet extends HttpServlet {
 			long todoID = Long.parseLong(request.getParameter("id"));
 			String status = request.getParameter("type");
 
-			if (status.equals("TODO") == false && status.equals("DOING") == false) {//status가 "TODE"도 아니고, "DOING"도 아닐 때.
+			if (status.equals("TODO") == false && status.equals("DOING") == false) {//status가 "TODO"도 아니고, "DOING"도 아닐 때.
 				System.out.println("유효하지 않은 status");
-				response.setStatus(400);
+				response.setStatus(406); //406(허용되지 않음): 요청한 페이지가 요청한 콘텐츠 특성으로 응답할 수 없다.
 				return;
 			}
 
@@ -38,7 +38,7 @@ public class UpdateStatusServlet extends HttpServlet {
 			dao.updateTodo(nextTodo);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			response.setStatus(400);
+			response.setStatus(500); //500(내부 서버 오류): 서버에 오류가 발생하여 요청을 수행할 수 없다.
 			return;
 		}
 	}
