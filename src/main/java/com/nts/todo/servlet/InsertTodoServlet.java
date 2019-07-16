@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.nts.todo.dao.TodoDAO;
 import com.nts.todo.dto.Todo;
 
 @WebServlet("/insert-todo")
@@ -20,17 +21,14 @@ public class InsertTodoServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		try {
-			//			TodoDAO dao = TodoDAO.getInstance();
-			//			dao.addTodo(createTodo(request));
-			//			response.sendRedirect("main");
-			throw new SQLException();
+			TodoDAO dao = TodoDAO.getInstance();
+			dao.addTodo(createTodo(request));
+			response.sendRedirect("main");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			request.setAttribute("InsertFailed", true);
-
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("main");
 			requestDispatcher.forward(request, response);
-
 		}
 
 	}
