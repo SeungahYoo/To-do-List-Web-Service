@@ -23,7 +23,7 @@ public class UpdateStatusServlet extends HttpServlet {
 			long todoID = Long.parseLong(request.getParameter("id"));
 			String status = request.getParameter("type");
 
-			if (status == null || (status.equals("TODO") == false && status.equals("DOING") == false)) {//status가 "TODO"도 아니고, "DOING"도 아닐 때.
+			if (isValidStatus(status)) {
 				System.out.println("유효하지 않은 status");
 				response.setStatus(406); //406(허용되지 않음): 요청한 페이지가 요청한 콘텐츠 특성으로 응답할 수 없다.
 				return;
@@ -42,5 +42,10 @@ public class UpdateStatusServlet extends HttpServlet {
 			response.setStatus(500); //500(내부 서버 오류): 서버에 오류가 발생하여 요청을 수행할 수 없다.
 			return;
 		}
+	}
+
+	boolean isValidStatus(String status) {
+		//status가 null이거나, "TODO"도 아니고 "DOING"도 아닐 때.
+		return (status == null || (status.equals("TODO") == false && status.equals("DOING") == false));
 	}
 }
