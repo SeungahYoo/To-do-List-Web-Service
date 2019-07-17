@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,8 +83,9 @@ public class TodoDAO {
 		selectedTodo.setName(rs.getString("name"));
 		selectedTodo.setSequence(rs.getInt("sequence"));
 		selectedTodo.setType(rs.getString("type"));
-		if (rs.getTimestamp("regdate") != null) {
-			selectedTodo.setRegdate(rs.getTimestamp("regdate").toLocalDateTime());
+		Timestamp timeStamp = rs.getTimestamp("regdate");
+		if (timeStamp != null) {
+			selectedTodo.setRegdate(timeStamp.toLocalDateTime());
 		}
 
 		return selectedTodo;
