@@ -1,8 +1,7 @@
-
 function init(){
 	const Buttons = document.querySelectorAll("button");
 	
-	Buttons.forEach((event)=>{
+	Buttons.forEach((event) => {
 		event.addEventListener("click",changeStatus)
 	});
 }
@@ -12,7 +11,7 @@ function changeStatus() {
 	const request = new XMLHttpRequest();
 	const information = `id=${button.dataset.id}&type=${button.dataset.type}`;
 
-	request.open("POST", "update-status");// parameter를 붙여서 보낼수있음.
+	request.open("POST", "update-status");
 	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	request.send(information);
 	
@@ -26,6 +25,7 @@ function changeStatus() {
 		button.remove();
 		doList = document.querySelector("#done-list");
 	}
+	
 	doList.appendChild(clickedCard);
 	
 	request.onreadystatechange = () => {
@@ -36,6 +36,6 @@ function changeStatus() {
 	};
 }
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded", function(){
 	init();
 })

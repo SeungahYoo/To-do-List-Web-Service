@@ -23,7 +23,7 @@ public class UpdateStatusServlet extends HttpServlet {
 			long todoID = Long.parseLong(request.getParameter("id"));
 			String status = request.getParameter("type");
 
-			if (status.equals("TODO") == false && status.equals("DOING") == false) {//status가 "TODO"도 아니고, "DOING"도 아닐 때.
+			if (status == null || (status.equals("TODO") == false && status.equals("DOING") == false)) {//status가 "TODO"도 아니고, "DOING"도 아닐 때.
 				System.out.println("유효하지 않은 status");
 				response.setStatus(406); //406(허용되지 않음): 요청한 페이지가 요청한 콘텐츠 특성으로 응답할 수 없다.
 				return;
