@@ -1,6 +1,13 @@
 function init() {
 	const Buttons = document.querySelectorAll("button");
-
+	
+	request.onreadystatechange = () => {
+		if (request.status >= 400) {
+			alert("오류가 발생했습니다. 다시 시도하세요");
+			return;
+		}
+	};
+	
 	Buttons.forEach((event) => {
 		event.addEventListener("click", changeStatus)
 	});
@@ -27,13 +34,6 @@ function changeStatus() {
 	}
 
 	doList.appendChild(clickedCard);
-
-	request.onreadystatechange = () => {
-		if (request.status >= 400) {
-			alert("오류가 발생했습니다. 다시 시도하세요");
-			return;
-		}
-	};
 }
 
 document.addEventListener("DOMContentLoaded", function () {
