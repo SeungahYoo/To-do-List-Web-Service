@@ -29,12 +29,13 @@ public class UpdateStatusServlet extends HttpServlet {
 				return;
 			}
 
-			TodoDAO dao = TodoDAO.getInstance();
 			String nextStatus = (status.equals("TODO")) ? "DOING" : "DONE";
-			Todo nextTodo = new Todo();
 
+			Todo nextTodo = new Todo();
 			nextTodo.setId(todoID);
 			nextTodo.setType(nextStatus);
+
+			TodoDAO dao = TodoDAO.getInstance();
 			dao.updateTodo(nextTodo);
 		} catch (SQLException e) {
 			e.printStackTrace();
