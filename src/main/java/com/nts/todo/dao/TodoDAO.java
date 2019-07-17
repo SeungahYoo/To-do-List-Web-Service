@@ -23,15 +23,12 @@ public class TodoDAO {
 	private static String DB_USER = "user10";
 	private static String DB_PASSWORD = "user10";
 
-	private static TodoDAO instance;
+	private static TodoDAO DAO_INSTANCE = new TodoDAO();
 
 	private TodoDAO() {}
 
 	public static TodoDAO getInstance() {
-		if (instance == null) {
-			instance = new TodoDAO();
-		}
-		return instance;
+		return DAO_INSTANCE;
 	}
 
 	public List<Todo> getTodos(String type) throws SQLException {
